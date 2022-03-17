@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор для майнинг-фермы</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+      integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: "#0F172A",
+              input_dark: "#1E293B",
+              slate: {
+                700: "#38BCF7",
+                900: "#0EA5E9",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark">
+    <!-- header start -->
+    <header class="header">
+      <nav
+        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
+      >
+        <div
+          class="container flex flex-wrap justify-between items-center mx-auto"
+        >
+          <a href="#calculator" class="flex items-center">
+            <img
+              src="img/logo.svg"
+              class="mr-3 h-6 sm:h-10"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+              >Калькулятор для майнинг-фермы</span
+            >
+          </a>
+          <button
+            data-collapse-toggle="mobile-menu"
+            type="button"
+            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu-2"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <svg
+              class="hidden w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul
+              class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+            >
+              <li>
+                <a
+                  href="#calculator"
+                  class="block py-2 pr-4 pl-3 text-white bg-slate-900 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+                  aria-current="page"
+                  >Калькулятор</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#result"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Результат</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#filters"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Фильтры</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Диаграмма</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- header end -->
+
+    <!-- main start -->
+    <main class="main">
+      <!-- calculator start -->
+      <section
+        id="calculator"
+        class="bg-[url('/img/beams.jpg')] bg-cover bg-center py-16"
+      >
+        <div class="container mx-auto px-4 w-full md:w-[50%]">
+          <div class="text-white text-center mb-12">
+            <h1 class="font-bold text-[48px] mb-3">
+              <span class="text-slate-900">Калькулятор</span> прибыльности
+            </h1>
+            <p>
+              <span class="text-slate-900">Проверьте</span> или
+              <span class="text-slate-900">сравните</span> потенциальный
+              заработок вашего оборудования
+            </p>
+          </div>
+          <div class="bg-[#334155] p-5 rounded-lg">
+            <form action="">
+              <div class="mb-5">
+                <div class="mb-5">
+                  <label
+                    for="price"
+                    class="block text-sm font-semibold text-white mb-3"
+                    >Цена электроэнергии <small class="ml-5 text-[12px] font-normal text-[#9CA3AF]">6,52 тенге = 0,013 доллар (по курсу 1 тенге = 0,0020 доллар)</small></label
+                  >
+                  <div class="mt-1 relative rounded-md shadow-sm">
+                    <div
+                      class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+                    >
+                      <span class="text-[#9CA3AF] sm:text-sm font-medium">
+                        USD/kWH
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      name="price"
+                      id="price"
+                      class="focus:outline-none focus:ring focus:border-blue-500 block w-full py-3 pl-[12rem] pr-7 sm:text-sm border-none rounded-md bg-input_dark text-white"
+                      placeholder=""
+                      value="0.013"
+                      readonly
+                    />
+                    <div class="absolute inset-y-0 left-0 flex items-center">
+                      <label for="currency" class="sr-only">Currency</label>
+                      <select
+                        id="currency"
+                        name="currency"
+                        class="h-full py-0 px-3 pr-8 mr-2 border-none bg-transparent text-white font-medium sm:text-sm rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                      >
+                        <option class="bg-input_dark default-option" value="default">Цена по умолчению</option>
+                        <option class="bg-input_dark other-option" value="other">Ввести вручную</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div id="components__content">
+                  <div class="mb-5">
+                    <div class="flex w-full">
+                      <label
+                        for="component"
+                        class="block text-sm font-semibold text-white mb-3 w-[73%]"
+                        >Устройство</label
+                      >
+                      <label
+                        for="components_amount"
+                        class="block text-sm font-semibold text-white mb-3 w-[27%]"
+                        >Кол. устройств</label
+                      >
+                    </div>
+                    <div id="components" class="w-full flex">
+
+                      <select
+                        id="component"
+                        name="component"
+                        class="component h-full py-3 px-3 mr-2 border-none bg-input_dark font-medium w-[73%] text-white sm:text-sm rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                      ></select>
+                      <input
+                        type="number"
+                        id="components_amount"
+                        name="components_amount"
+                        value="1"
+                        min="1"
+                        class="components_amount focus:outline-none focus:ring focus:border-blue-500 mr-2 block py-3 w-[20%] sm:text-sm border-none rounded-md bg-input_dark text-white"
+                      />
+                      <div
+                        class="remove-component flex items-center justify-center transition-[0.3] w-[7%] rounded-md bg-transparent hover:bg-input_dark"
+                      >
+                        <i class="fa-solid fa-trash-can text-white"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <span
+                    class="text-slate-400 dark:hover:text-slate-300 cursor-pointer"
+                    id="add-component"
+                    >+ Добавить другое устройство</span
+                  >
+                </div>
+              </div>
+              <button
+                type="button"
+                id="submit-data"
+                class="w-full py-2 px-4 bg-slate-900 hover:bg-slate-700 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+              >
+                <i class="fa-solid fa-calculator text-white mr-3"></i>
+                Посчитать
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- calculator end -->
+
+      <!-- result start -->
+      <section id="result" class="py-16">
+        <div class="container mx-auto px-4 w-full md:w-[50%]">
+          <div class="text-center">
+            <h3 class="text-[36px] font-semibold text-white mb-5">Результат</h3>
+            <h3
+              class="result-devices text-[18px] mb-5 text-left flex justify-center font-semibold text-slate-400 dark:text-slate-300"
+            >
+            </h3>
+            <small
+              class="text-[24px] font-semibold text-slate-400 dark:text-slate-300"
+              >Ваш приблиз. доход</small
+            >
+            <h2 class="result-income text-[48px] font-bold text-slate-900">
+              <p>Нажмите на кнопку Посчитать!</p>
+              <!-- 0 USD<small
+                class="text-[24px] font-normal text-slate-400 dark:text-slate-300"
+              >
+                / День</small
+              > -->
+            </h2>
+          </div>
+        </div>
+      </section>
+      <!-- result end -->
+
+      <!-- filters start -->
+      <section id="filters" class="py-16">
+        <div class="container mx-auto px-4 w-full md:w-[70%]">
+          <h3 class="text-[36px] font-semibold text-white mb-5 text-center">
+            Прошлый заработок вашего оборудования
+          </h3>
+          <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+                <div class="filter-table overflow-hidden shadow-md sm:rounded-lg">
+                  <p class="text-center text-white">Нажмите на кнопку Посчитать!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- filters end -->
+    </main>
+    <!-- main end -->
+
+    <!-- footer start -->
+    <footer class="footer"></footer>
+    <!-- footer end -->
+
+    <!-- Libs -->
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <!-- Main js -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
