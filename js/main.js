@@ -1,4 +1,4 @@
-const api_url = "http://127.0.0.1:8000/api/v1/deviceList/"
+const api_url = "https://calculator.pythonanywhere.com/api/v1/deviceList/"
 let data
 
 // TODO: writing the main functionality of app (getting results of calculations) =)
